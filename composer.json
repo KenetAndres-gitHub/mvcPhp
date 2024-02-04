@@ -1,0 +1,19 @@
+{
+    "name": "kenet/pruebas",
+    "description": "Projecto MVC con php puro",
+    "type": "project",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "App\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Kenet Chungandro"
+        }
+    ],
+    "require": {
+        "vlucas/phpdotenv": "^5.4"
+    }
+}
