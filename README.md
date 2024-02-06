@@ -9,11 +9,13 @@ proyecto/
 ├── src/  
 │ ├── controller/  
 │ │ └── UserController.php  
-│ ├── models/  
-│ │ └── UserModel.php  
-│ ├── views/  
+│ ├── entity/  
+│ │ └── User.php  
+│ ├── repository/  
+├── templates/  
 │ │ └── users/  
-│ │ └── index.php  
+│ │ └──--- index.php  
+├── config/  
 │ └── router.php  
 │  
 ├── vendor/  
@@ -23,7 +25,7 @@ proyecto/
 ├── index.php  
 └── config.php  
 
-- **src/**: Directorio que contiene los controladores, modelos y vistas de la aplicación.
+- **src/**: Directorio que contiene los controladores, entidades y repositorios de la aplicación.
 - **vendor/**: Carpeta generada por Composer que contiene las dependencias del proyecto.
 - **.htaccess**: Archivo de configuración para la reescritura de URL.
 - **index.php**: Punto de entrada de la aplicación.
