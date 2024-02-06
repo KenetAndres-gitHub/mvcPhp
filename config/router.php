@@ -1,17 +1,10 @@
 <?php
-require_once 'config.php';
 
 // Enrutador básico
 use App\Controller\UserController;
 
 class Router {
     private $routes = [];
-    private $pdo;
-
-    // Constructor que recibe la conexión PDO
-    public function __construct(PDO $pdo) {
-        $this->pdo = $pdo;
-    }
 
     // Método para añadir rutas
     public function addRoute($route, $handler) {
@@ -20,40 +13,53 @@ class Router {
 
     // Método para manejar la solicitud y llamar al controlador correspondiente
     public function handleRequest($uri) {
-        // Comprobar si la URI comienza con '/pruebas'
-        if (strpos($uri, '/pruebas') === 0) {
-            // Eliminar '/pruebas' de la URI para obtener la ruta relativa
-            $relativeUri = substr($uri, strlen('/pruebas'));
+        // Obtener solo la ruta relativa eliminando la parte inicial "/pruebas"
+        $path = parse_url($uri, PHP_URL_PATH);
+        $path = str_replace('/pruebas', '', $path);
 
-            // Verificar si la ruta relativa está definida en las rutas
-            if (array_key_exists($relativeUri, $this->routes)) {
-                $handler = $this->routes[$relativeUri];
-                // Llamar al controlador con la conexión PDO como parámetro
-                $handler($this->pdo);
-            } else {
-                // Manejar error 404
-                http_response_code(404);
-                echo "Página no encontrada";
+         // Extraer los parámetros de la URI
+         $parts = explode('/', $path);  $route = '/';
+         $parametro = end($parts);
+         if((count($parts))-1 >= 2){
+            foreach($parts as $item){
+                //Guarda en la ruta todo aquello distinto de espacios vacíos y el parámetro
+                if($item != "" && $item != $parametro){ $route .= $item."/"; }
             }
-        } else {
-            // Si la URI no comienza con '/pruebas', manejar error 404
-            http_response_code(404);
-            echo "Página no encontrada";
+         }else{
+            foreach($parts as $item){
+                if($item != "" ){ $route .= $item . ($item == $parametro ? '' : '/');}
+            }
+         }
+        // Verificar si la ruta está definida en las rutas estáticas
+        if (isset($this->routes[$route])) {
+            $handler = $this->routes[$route];
+            $handler($parametro);
+            return;
         }
+        // Si no se encontró ninguna coincidencia, manejar error 404
+        http_response_code(404);
+        echo "Página no encontrada";
     }
 }
 
 // Instanciar el enrutador pasando la conexión PDO
-$router = new Router($pdo);
+$router = new Router();
 
 // Definir las rutas y los controladores correspondientes
-$router->addRoute('/users', function($pdo) {
+$router->addRoute('/users', function() {
     // Lógica para cargar la acción 'index' del controlador 'UserController'
     $controller = new UserController();
-    $controller->index($pdo);
+    $controller->index();
 });
 
-$router->addRoute('/users/create', function($pdo) {
+// Definir las rutas y los controladores correspondientes
+$router->addRoute('/users/edit/', function($id) {
+    // Lógica para cargar la acción 'index' del controlador 'UserController'
+    $controller = new UserController();
+    $controller->edit($id);
+});
+
+$router->addRoute('/users/create', function() {
     // Lógica para cargar la acción 'create' del controlador 'UserController'
     include('controllers/UserController.php');
    // $controller = new UserController();

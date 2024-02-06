@@ -1,32 +1,23 @@
 <?php
 
 namespace App\Controller;
+require_once 'config.php';
 
 use App\Entity\User;
-use App\Repository\UserRepository;
-use PDO;
 
 class UserController
 {
-    //protected $pdo;
 
-     // Constructor para recibir la conexión PDO
-    /*  public function __construct(PDO $pdo) {
-        $this->pdo = $pdo;
-    } */
-
-    public function index($pdo) {
+    public function index() {
         // Consulta SQL para obtener todos los usuarios
-        $users = new User($pdo);
-        $listUsers = $users->findAll();
-        var_dump($listUsers);
-        /*  $statement = $pdo->query('SELECT * FROM user');
-        $users = $statement->fetchAll(PDO::FETCH_ASSOC);
-        var_dump($users); */
+        $users = new User();
+        $listUsers = $users->getUsers();
         include('templates/users/index.php');
     }
 
-    public function create() {
-        include('templates/users/index.php');
+    public function edit($id) {
+        $users = new User();
+        $data = $users->getFind($id);
+        include('templates/users/edit.php');
     }
 }

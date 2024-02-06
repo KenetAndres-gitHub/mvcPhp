@@ -9,9 +9,12 @@ $dbPass = $_ENV['DB_PASS'];
 $dbName = $_ENV['DB_NAME'];
 
 // Intentar establecer la conexión a la base de datos
+global $pdo;
 try {
+
     $pdo = new PDO("mysql:host=$dbHost;dbname=$dbName", $dbUser, $dbPass);
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 } catch (PDOException $e) {
     die("Error al conectar a la base de datos: " . $e->getMessage());
 }
+?>
