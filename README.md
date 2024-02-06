@@ -1,4 +1,4 @@
-### Proyecto PHP con Patrón MVC y Gestión de Dependencias con Composer
+# Proyecto PHP con Patrón MVC y Gestión de Dependencias con Composer
 
 Este proyecto utiliza PHP puro implementando el patrón de diseño Modelo-Vista-Controlador (MVC) para estructurar la aplicación. Se hace uso de Composer para la gestión de dependencias y se emplea Apache como servidor web junto con PostgreSQL como sistema de gestión de bases de datos.
 
@@ -36,4 +36,6 @@ Composer se utiliza para gestionar las dependencias del proyecto, facilitando la
 3. Ejecutar `composer install` en la raíz del proyecto para instalar las dependencias.
 4. Configurar las variables de entorno y las credenciales de la base de datos en el archivo `.env`.
 5. Iniciar el servidor Apache y acceder a la aplicación a través del navegador web.
+
+Proyecto creado por Kenet Chungandro
 
