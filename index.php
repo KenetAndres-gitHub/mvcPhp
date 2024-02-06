@@ -1,5 +1,6 @@
 <?php
 require_once __DIR__ . '/vendor/autoload.php';
-echo "Hola";
+// Incluye el enrutador
+require_once __DIR__ . '/config/router.php';
 
 ?>

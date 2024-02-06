@@ -37,5 +37,5 @@ Composer se utiliza para gestionar las dependencias del proyecto, facilitando la
 4. Configurar las variables de entorno y las credenciales de la base de datos en el archivo `.env`.
 5. Iniciar el servidor Apache y acceder a la aplicación a través del navegador web.
 
-Proyecto creado por Kenet Chungandro
+Proyecto creado por Kenet Chungandro.
 

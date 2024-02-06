@@ -7,5 +7,11 @@ use App\Repository\UserRepository;
 
 class UserController
 {
-    
+    public function index() {
+        include('templates/users/index.php');
+    }
+
+    public function create() {
+        include('templates/users/index.php');
+    }
 }
