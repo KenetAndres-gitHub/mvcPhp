@@ -45,11 +45,11 @@ El archivo `config.php` contiene la lógica para manejar las solicitudes a la bd
 
 Para que las rutas funcionen correctamente, asegúrate de configurar Apache para permitir la reescritura de URL. Agrega las siguientes líneas al archivo de configuración de Apache (`httpd.conf` o `apache2.conf`) o al archivo de configuración del virtual host:
 
-<Directory /ruta/a/tu/proyecto> \n
-Options Indexes FollowSymLinks
-AllowOverride All
-Require all granted
-</Directory>
+<Directory /ruta/a/tu/proyecto>  
+Options Indexes FollowSymLinks  
+AllowOverride All  
+Require all granted  
+</Directory>  
 
 Reemplaza `/ruta/a/tu/proyecto` con la ruta absoluta a la carpeta raíz de tu proyecto.
 
