@@ -4,24 +4,24 @@ Este proyecto utiliza PHP puro implementando el patrón de diseño Modelo-Vista-
 
 #### Estructura de Archivos y Carpetas
 
-proyecto/
-│
-├── src/
-│ ├── controller/
-│ │ └── UserController.php
-│ ├── models/
-│ │ └── UserModel.php
-│ ├── views/
-│ │ └── users/
-│ │ └── index.php
-│ └── router.php
-│
-├── vendor/
-│ └── autoload.php
-│
-├── .htaccess
-├── index.php
-└── config.php
+proyecto/  
+│  
+├── src/  
+│ ├── controller/  
+│ │ └── UserController.php  
+│ ├── models/  
+│ │ └── UserModel.php  
+│ ├── views/  
+│ │ └── users/  
+│ │ └── index.php  
+│ └── router.php  
+│  
+├── vendor/  
+│ └── autoload.php  
+│  
+├── .htaccess  
+├── index.php  
+└── config.php  
 
 - **src/**: Directorio que contiene los controladores, modelos y vistas de la aplicación.
 - **vendor/**: Carpeta generada por Composer que contiene las dependencias del proyecto.
