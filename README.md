@@ -3,7 +3,7 @@
 Este proyecto utiliza PHP puro implementando el patrón de diseño Modelo-Vista-Controlador (MVC) para estructurar la aplicación. Se hace uso de Composer para la gestión de dependencias y se emplea Apache como servidor web junto con PostgreSQL como sistema de gestión de bases de datos.
 
 #### Estructura de Archivos y Carpetas
-`
+
 proyecto/
 │
 ├── src/
@@ -22,7 +22,7 @@ proyecto/
 ├── .htaccess
 ├── index.php
 └── config.php
-`
+
 - **src/**: Directorio que contiene los controladores, modelos y vistas de la aplicación.
 - **vendor/**: Carpeta generada por Composer que contiene las dependencias del proyecto.
 - **.htaccess**: Archivo de configuración para la reescritura de URL.
@@ -45,7 +45,7 @@ El archivo `config.php` contiene la lógica para manejar las solicitudes a la bd
 
 Para que las rutas funcionen correctamente, asegúrate de configurar Apache para permitir la reescritura de URL. Agrega las siguientes líneas al archivo de configuración de Apache (`httpd.conf` o `apache2.conf`) o al archivo de configuración del virtual host:
 
-<Directory /ruta/a/tu/proyecto>
+<Directory /ruta/a/tu/proyecto> \n
 Options Indexes FollowSymLinks
 AllowOverride All
 Require all granted
