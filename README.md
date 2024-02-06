@@ -3,19 +3,63 @@
 Este proyecto utiliza PHP puro implementando el patrón de diseño Modelo-Vista-Controlador (MVC) para estructurar la aplicación. Se hace uso de Composer para la gestión de dependencias y se emplea Apache como servidor web junto con PostgreSQL como sistema de gestión de bases de datos.
 
 #### Estructura de Archivos y Carpetas
-
-- **src/**
-  - **entity/**: Contiene las entidades del proyecto.
-  - **repository/**: Directorio para las clases de repositorio.
-  - **controller/**: Controladores de la aplicación.
+`
+proyecto/
+│
+├── src/
+│ ├── controller/
+│ │ └── UserController.php
+│ ├── models/
+│ │ └── UserModel.php
+│ ├── views/
+│ │ └── users/
+│ │ └── index.php
+│ └── router.php
+│
+├── vendor/
+│ └── autoload.php
+│
+├── .htaccess
+├── index.php
+└── config.php
+`
+- **src/**: Directorio que contiene los controladores, modelos y vistas de la aplicación.
 - **vendor/**: Carpeta generada por Composer que contiene las dependencias del proyecto.
-- **composer.json**: Archivo de configuración de Composer.
-- **config.php**: Archivo PHP para la configuración y carga del autoloader.
-- **.env**: Archivo de configuración que contiene variables globales, incluyendo credenciales para la base de datos.
+- **.htaccess**: Archivo de configuración para la reescritura de URL.
+- **index.php**: Punto de entrada de la aplicación.
+- **config.php**: Archivo de configuración de la base de datos y otras configuraciones globales.
 
 #### Configuración y Autoload
 
-El archivo `config.php` se encarga de cargar el autoload generado por Composer y puede contener otras configuraciones relevantes para el proyecto.
+El archivo `config.php` se encarga de configurar la conexión a la base de datos y otras configuraciones globales. El archivo `index.php` incluye este archivo de configuración y carga el autoload generado por Composer para cargar las clases de manera automática.
+
+#### Enrutamiento
+
+El archivo `router.php` define las rutas de la aplicación y los controladores correspondientes para manejar las solicitudes entrantes. Se utiliza una instancia de la clase `Router` para agregar rutas y manejar las solicitudes.
+
+#### Acceso a la Base de Datos
+
+El archivo `config.php` contiene la lógica para manejar las solicitudes a la bd. 
+
+#### Configuración de Apache
+
+Para que las rutas funcionen correctamente, asegúrate de configurar Apache para permitir la reescritura de URL. Agrega las siguientes líneas al archivo de configuración de Apache (`httpd.conf` o `apache2.conf`) o al archivo de configuración del virtual host:
+
+<Directory /ruta/a/tu/proyecto>
+Options Indexes FollowSymLinks
+AllowOverride All
+Require all granted
+</Directory>
+
+Reemplaza `/ruta/a/tu/proyecto` con la ruta absoluta a la carpeta raíz de tu proyecto.
+
+#### Instrucciones de Ejecución
+
+1. Configura Apache para permitir la reescritura de URL.
+2. Asegúrate de tener PostgreSQL instalado y configurado correctamente.
+3. Ejecuta `composer install` en la raíz del proyecto para instalar las dependencias.
+4. Configura las variables de entorno y las credenciales de la base de datos en el archivo `config.php`.
+5. Inicia el servidor Apache y accede a la aplicación a través del navegador web.
 
 #### Variables Globales y Credenciales de Base de Datos
 
@@ -29,13 +73,6 @@ Se utiliza Apache como servidor web para ejecutar la aplicación PHP.
 
 Composer se utiliza para gestionar las dependencias del proyecto, facilitando la instalación y actualización de librerías de terceros.
 
-#### Instrucciones de Ejecución
-
-1. Configurar el servidor Apache para que apunte al directorio raíz del proyecto.
-2. Asegurarse de tener PostgreSQL instalado y configurado correctamente.
-3. Ejecutar `composer install` en la raíz del proyecto para instalar las dependencias.
-4. Configurar las variables de entorno y las credenciales de la base de datos en el archivo `.env`.
-5. Iniciar el servidor Apache y acceder a la aplicación a través del navegador web.
 
 Proyecto creado por Kenet Chungandro.
 
