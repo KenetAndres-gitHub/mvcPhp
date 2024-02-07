@@ -38,6 +38,7 @@
     <table>
         <thead >
             <tr style="font-size: 20px;">
+                <th><a href="/pruebas/add" style="color: #ddd;">+</a></th>
                 <th>Nombre</th>
                 <th>Apellido</th>
                 <th>Edad</th>
@@ -45,14 +46,24 @@
             </tr>
         </thead>
         <tbody>
+            <?php if(count($listUsers)!=0){ ?>
             <?php foreach ($listUsers as $user): ?>
                 <tr>
+                    <td><?php echo $count; ?></td>
                     <td><?php echo $user['first_name']; ?></td>
                     <td><?php echo $user['last_name']; ?></td>
                     <td><?php echo $user['age']; ?></td>
-                    <td><a href="/pruebas/users/edit/1">Editar</a> </td>
+                    <td>
+                        <a href="/pruebas/users/edit/<?php echo $user['id'];?>">Editar</a> 
+                        <a href="/pruebas/users/remove/<?php echo $user['id'];?>">Eliminar</a> 
+                    </td>
                 </tr>
+            <?php $count++; ?>
             <?php endforeach; ?>
+            <?php }else{ ?>
+                <p>No hay Datos para mostrar</p>
+            <?php }?>
+
         </tbody>
     </table>
 </body>

@@ -7,18 +7,6 @@ use App\Repository\UserRepository;
 class User
 {
     // ... getters and setters
-
-    public function save()
-    {
-
-     /*    $stmt = $this->pdo->prepare("INSERT INTO users (first_name, last_name) VALUES (:first_name, :last_name)");
-        $stmt->bindParam(':first_name', $this->firstName);
-        $stmt->bindParam(':last_name', $this->lastName);
-        $stmt->execute(); */
-
-       /*  $this->id = $this->pdo->lastInsertId(); */
-    }
-
     public function getUsers()
     {
         // Crear un array para almacenar los usuarios
@@ -48,5 +36,19 @@ class User
         }
         $user = $users[0];
         return $user;
+    }
+    public function save($data)
+    {
+        // Crear un array para almacenar los usuarios
+        $userRepository = new UserRepository();
+        $update = $userRepository->saveData($data);
+        return $update;
+    }
+    public function remove($data)
+    {
+        // Crear un array para almacenar los usuarios
+        $userRepository = new UserRepository();
+        $update = $userRepository->remove($data);
+        return $update;
     }
 }

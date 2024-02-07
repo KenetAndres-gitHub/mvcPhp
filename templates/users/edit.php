@@ -70,15 +70,16 @@
 </head>
 <body>
     <div class="card">
-        <form action="guardar_edicion.php" method="POST">
-            <h2>Editar Usuario</h2>
+        <form action="/pruebas/save"  name="user" method="POST">
+            <h2><?php echo $title; ?> Usuario</h2>
+            <input type="hidden"  name="id" value="<?php echo $data['id'];?>">
             <label for="nombre">Nombre:</label>
-            <input type="text" id="nombre" name="nombre" value="<?php echo $data['first_name'];?>">
+            <input type="text" name="nombre" value="<?php echo $data['first_name'];?>">
             <label for="apellido">Apellido:</label>
-            <input type="text" id="apellido" name="apellido" value="Apellido del usuario">
+            <input type="text" name="apellido" value="<?php echo $data['last_name'];?>">
             <label for="edad">Edad:</label>
-            <input type="text" id="edad" name="edad" value="Edad del usuario">
-            <input type="submit" value="Guardar Cambios">
+            <input type="text" name="edad" value="<?php echo $data['age'];?>">
+            <input type="submit" value="Guardar">
         </form>
         <br>
         <a href="/pruebas/users"  style="padding: 10px;" class="button button-secondary">Volver</a>

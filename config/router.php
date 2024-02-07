@@ -53,10 +53,33 @@ $router->addRoute('/users', function() {
 });
 
 // Definir las rutas y los controladores correspondientes
+$router->addRoute('/add', function() {
+    // Lógica para cargar la acción 'index' del controlador 'UserController'
+    $controller = new UserController();
+    $controller->add();
+});
+
+
 $router->addRoute('/users/edit/', function($id) {
     // Lógica para cargar la acción 'index' del controlador 'UserController'
     $controller = new UserController();
     $controller->edit($id);
+});
+
+$router->addRoute('/users/remove/', function($id) {
+    // Lógica para cargar la acción 'index' del controlador 'UserController'
+    $controller = new UserController();
+    $controller->remove($id);
+});
+
+// Definir las rutas y los controladores correspondientes
+$router->addRoute('/save', function() {
+    $controller = new UserController();
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        $controller->save($_POST);
+    }else{
+        echo "Los datos no se pudieron enviar de manera correcta";
+    }   
 });
 
 $router->addRoute('/users/create', function() {
